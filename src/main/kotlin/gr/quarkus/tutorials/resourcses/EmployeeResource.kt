@@ -12,7 +12,6 @@ import org.eclipse.microprofile.graphql.Mutation
 import org.eclipse.microprofile.graphql.Query
 import javax.ws.rs.*
 
-@Path("/employees")
 @GraphQLApi
 class EmployeeResource(val employeeService: EmployeeService, val information: InformationService) {
 

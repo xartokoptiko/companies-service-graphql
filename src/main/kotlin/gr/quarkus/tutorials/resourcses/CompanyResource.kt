@@ -14,7 +14,6 @@ import org.eclipse.microprofile.graphql.Query
 import javax.ws.rs.*
 
 @GraphQLApi
-@Path("/companies")
 class CompanyResource(val companyService: CompanyService, val information: InformationService) {
 
     @Query("Companies")
