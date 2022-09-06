@@ -6,28 +6,24 @@ import gr.quarkus.tutorials.entities.Phone
 import gr.quarkus.tutorials.services.EmployeeService
 import gr.quarkus.tutorials.services.InformationService
 import io.smallrye.mutiny.Uni
-import io.vertx.core.json.JsonObject
 import org.eclipse.microprofile.graphql.Description
 import org.eclipse.microprofile.graphql.GraphQLApi
 import org.eclipse.microprofile.graphql.Mutation
 import org.eclipse.microprofile.graphql.Query
-import javax.annotation.security.RolesAllowed
 import javax.ws.rs.*
-import javax.ws.rs.core.MediaType
-import javax.ws.rs.core.Response
 
 @Path("/employees")
 @GraphQLApi
-class EmployeeResource(val employeeService: EmployeeService, val information : InformationService) {
+class EmployeeResource(val employeeService: EmployeeService, val information: InformationService) {
 
     @Query("Employees")
     @Description("Get all employees from the data base")
-    fun getAll(page: Int = 1, size: Int = 3) : Uni<MutableList<Employee>> =
+    fun getAll(page: Int = 1, size: Int = 3): Uni<MutableList<Employee>> =
         employeeService.getEmployees(page, size)
 
     @Query("Employee")
     @Description("Get one employee from the data base")
-    fun getOne(id : Long) : Uni<Employee>? =
+    fun getOne(id: Long): Uni<Employee>? =
         employeeService.getEmployee(id)
 
     @Mutation

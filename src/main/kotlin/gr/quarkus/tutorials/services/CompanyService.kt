@@ -12,10 +12,10 @@ import javax.ws.rs.core.Response
 @ApplicationScoped
 class CompanyService(val companyRepository: CompanyRepository) {
 
-    fun getCompanies(page: Int, size : Int) : Uni<MutableList<Company>> =
+    fun getCompanies(page: Int, size: Int): Uni<MutableList<Company>> =
         companyRepository.getPage(page, size)
 
-    fun getCompany(id : Long) : Uni<Company>? =
+    fun getCompany(id: Long): Uni<Company>? =
         companyRepository.findById(id)
 
     fun createCompany(company: Company): Uni<Company> =
@@ -23,5 +23,5 @@ class CompanyService(val companyRepository: CompanyRepository) {
 
     fun deleteCompany(id: Long): Uni<Boolean> =
         companyRepository.deleteById(id)
-            .call { _-> companyRepository.flush() }
+            .call { _ -> companyRepository.flush() }
 }

@@ -7,28 +7,24 @@ import gr.quarkus.tutorials.entities.Phone
 import gr.quarkus.tutorials.services.CompanyService
 import gr.quarkus.tutorials.services.InformationService
 import io.smallrye.mutiny.Uni
-import io.vertx.core.json.JsonObject
 import org.eclipse.microprofile.graphql.Description
 import org.eclipse.microprofile.graphql.GraphQLApi
 import org.eclipse.microprofile.graphql.Mutation
 import org.eclipse.microprofile.graphql.Query
-import javax.annotation.security.RolesAllowed
 import javax.ws.rs.*
-import javax.ws.rs.core.MediaType
-import javax.ws.rs.core.Response
 
 @GraphQLApi
 @Path("/companies")
-class CompanyResource(val companyService: CompanyService, val information : InformationService) {
+class CompanyResource(val companyService: CompanyService, val information: InformationService) {
 
     @Query("Companies")
     @Description("Get all companies from data base ")
-    fun getEmployees(page: Int = 1, size: Int = 3) : Uni<MutableList<Company>> =
+    fun getEmployees(page: Int = 1, size: Int = 3): Uni<MutableList<Company>> =
         companyService.getCompanies(page, size)
 
     @Query("Company")
     @Description("Get one company from the database")
-    fun getOne(id : Long) : Uni<Company>? =
+    fun getOne(id: Long): Uni<Company>? =
         companyService.getCompany(id)
 
     @Mutation
@@ -36,7 +32,7 @@ class CompanyResource(val companyService: CompanyService, val information : Info
         companyService.createCompany(company)
 
     @Mutation
-    fun deleteCompany(id: Long)= companyService.deleteCompany(id)
+    fun deleteCompany(id: Long) = companyService.deleteCompany(id)
 
 
     @Mutation

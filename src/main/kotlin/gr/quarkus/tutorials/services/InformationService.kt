@@ -6,10 +6,8 @@ import gr.quarkus.tutorials.repositories.LocationRepository
 import gr.quarkus.tutorials.repositories.PhoneRepository
 import io.quarkus.logging.Log
 import io.smallrye.mutiny.Uni
-import io.smallrye.mutiny.coroutines.awaitSuspending
 
 import javax.enterprise.context.ApplicationScoped
-import javax.ws.rs.core.Response
 
 @ApplicationScoped
 class InformationService(
@@ -42,7 +40,7 @@ class InformationService(
         }
 
         return phoneRepository.delete(query, entity_id, id)
-            .call{ _-> phoneRepository.flush()}
+            .call { _ -> phoneRepository.flush() }
     }
 
     //Email services
@@ -71,7 +69,7 @@ class InformationService(
         }
 
         return emailRepository.delete(query, entity_id, id)
-            .call { _-> emailRepository.flush() }
+            .call { _ -> emailRepository.flush() }
     }
 
     //Location services
@@ -86,5 +84,5 @@ class InformationService(
 
     fun deleteLocation(company_id: Long, id: Long): Uni<Long>? =
         locationRepository.delete("company_id=?1 AND id=?2", company_id, id)
-            .call { _-> locationRepository.flush() }
+            .call { _ -> locationRepository.flush() }
 }

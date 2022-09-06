@@ -56,7 +56,7 @@ enum class Status(val index: Int) {
     WORKING(1), NOT_WORKING(2);
 }
 
-enum class Profession(){
+enum class Profession() {
     BUSINESS_MANAGER, SECRETARY, TECHNICAL_LEADER, TECHNICIAN,
     WEB_DEVELOPER, DESIGNER, WORKER, CLEANER, DEVELOPER, TESTER
 }
