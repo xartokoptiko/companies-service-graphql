@@ -1,4 +1,4 @@
-# companies-service-v3 Project
+# companies-service-graphql Project
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
